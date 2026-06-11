@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Linkedin, Github, Instagram, Twitter, Send } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Button } from "@/components/ui/button";
 import { portfolioData } from "@/data/portfolio";
 
 export function Hero() {
@@ -49,13 +48,8 @@ export function Hero() {
           {/* Left Content */}
           <div className="space-y-8">
             <motion.div variants={itemVariants} className="space-y-4">
-              <motion.p
-                className="text-[#22D3EE] font-semibold text-sm uppercase tracking-widest"
-                variants={itemVariants}
-              >
-                {language === "ar" ? "مرحباً بك" : "Welcome"}
-              </motion.p>
-
+              {/* تم حذف قسم الترحيب من هنا بناءً على طلبك */}
+              
               <motion.h1
                 className="text-4xl md:text-5xl font-bold text-foreground leading-tight"
                 variants={itemVariants}
@@ -105,29 +99,30 @@ export function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Social Links Updated with Real Icons */}
             <motion.div
               variants={itemVariants}
-              className="flex gap-4 pt-4"
+              className="flex flex-wrap gap-4 pt-4"
             >
-              <motion.a
-                href={data.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3 }}
-                className="w-10 h-10 rounded-full bg-[#6366F1]/10 flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1]/20 transition-colors"
-              >
-                <span className="text-sm font-bold">in</span>
-              </motion.a>
-              <motion.a
-                href={data.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3 }}
-                className="w-10 h-10 rounded-full bg-[#22D3EE]/10 flex items-center justify-center text-[#22D3EE] hover:bg-[#22D3EE]/20 transition-colors"
-              >
-                <span className="text-sm font-bold">GH</span>
-              </motion.a>
+              {[
+                { href: data.linkedin, icon: Linkedin, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
+                { href: data.github, icon: Github, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20" },
+                { href: data.instagram, icon: Instagram, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
+                { href: data.x, icon: Twitter, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20" },
+                { href: data.telegram, icon: Send, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
+              ].map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -4, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className={`w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-300 ${social.bg} ${social.color} ${social.hover}`}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
             </motion.div>
           </div>
 
@@ -186,4 +181,5 @@ export function Hero() {
       </motion.div>
     </section>
   );
-}
+              }
+              
