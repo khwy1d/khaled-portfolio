@@ -82,7 +82,7 @@ export function About() {
               {data.bio}
             </p>
 
-            // ... (باقي كود About.tsx)
+            
           <motion.div variants={itemVariants} className="space-y-6 lg:col-span-6">
             <p className="text-lg text-foreground/80 leading-relaxed">
               {data.bio}
@@ -104,8 +104,6 @@ export function About() {
                {/* ... محتوى الكاردات كما هو */}
             </div>
           </motion.div>
-// ...
-
             
 
             {/* Stat Cards */}
