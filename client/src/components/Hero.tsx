@@ -88,17 +88,7 @@ export function Hero() {
                 <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""}`} />
               </motion.a>
 
-              <motion.a
-                href={data.cv}
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-2xl font-bold text-lg hover:bg-[#22D3EE]/10 transition-all"
-              >
-                <Download className="w-5 h-5" />
-                {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
-              </motion.a>
-            </motion.div>
+              
 
             {/* Social Links with enhanced styling */}
             <motion.div
