@@ -48,7 +48,7 @@ export function Contact() {
     },
     {
       icon: Twitter,
-      href: data.twitter || "#",
+      href: data.x || "#",
       label: "Twitter",
     },
     {
