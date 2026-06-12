@@ -3,7 +3,7 @@ export const portfolioData = {
     ar: {
       name: "خالد أمين",
       title: "طالب ذكاء اصطناعي وعلوم بيانات",
-      subtitle: "مطور ويب ومهندس حلول رقمية",
+      subtitle: "تحويل الأفكار إلى حلول ويب تحل المشاكل الواقعية",
       bio: "طالب في السنة الثانية متخصص في الذكاء الاصطناعي وعلوم البيانات. مهتم بتطوير البرمجيات والتقنيات المتعلقة بالبيانات والحلول الرقمية. من خلال المشاريع الأكاديمية، اكتسبت خبرة في البرمجة وتصميم قواعد البيانات وتطوير الويب ومفاهيم تعلم الآلة الأساسية. أبحث عن فرصة للتعلم من مشاريع حقيقية وتحسين مهاراتي التقنية والمساهمة في مبادرات رقمية تخلق قيمة عملية للمجتمعات.",
       location: "تعز، اليمن",
       email: "khwyld.a.alsharabi@gmail.com",
@@ -20,7 +20,7 @@ export const portfolioData = {
     en: {
       name: "Khaled Ameen",
       title: "Artificial Intelligence & Data Science Student",
-      subtitle: "Web Developer & Digital Solutions Engineer",
+      subtitle: "Turning Ideas Into Web Solutions That Solve Real Problems",
       bio: "Second-year Artificial Intelligence and Data Science student at Taiz University. Interested in software development, data-related technologies, and digital solutions. Through academic projects, I have gained experience in programming, database design, web development, and introductory machine learning concepts. I am looking for an opportunity to learn from real projects, improve my technical skills, and contribute to digital initiatives that create practical value for communities.",
       location: "Taiz, Yemen",
       email: "khwyld.a.alsharabi@gmail.com",
