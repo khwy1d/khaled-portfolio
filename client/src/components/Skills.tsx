@@ -30,7 +30,8 @@ export function Skills() {
       {/* Background Elements */}
       <div className="absolute bottom-1/2 left-0 w-96 h-96 bg-[#22D3EE]/10 rounded-full blur-3xl opacity-20 -z-10" />
 
-      <div className="container max-w-5xl">
+      {/* تم التعديل هنا ليكون العرض أوسع ويطابق الأقسام السابقة */}
+      <div className="container max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,23 +50,26 @@ export function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          // تم زيادة المسافات (gap) لتتناسب مع العرض الجديد
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
         >
           {skillsData.map((skillGroup, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-xl bg-background border border-border hover:border-[#6366F1]/50 transition-all group"
+              className="p-6 rounded-xl bg-background border border-border hover:border-[#6366F1]/50 transition-all group shadow-sm hover:shadow-md"
             >
-              <div className="flex items-center gap-3 mb-4">
+              {/* تم زيادة المسافة السفلية هنا لتناسب الحجم الجديد */}
+              <div className="flex items-center gap-3 mb-6">
                 <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#6366F1] to-[#22D3EE]" />
-                <h3 className="font-bold text-foreground group-hover:text-[#6366F1] transition-colors">
+                <h3 className="text-xl font-bold text-foreground group-hover:text-[#6366F1] transition-colors">
                   {skillGroup.category}
                 </h3>
               </div>
 
-              <div className="space-y-2">
+              {/* تم زيادة المسافات بين المهارات */}
+              <div className="space-y-3">
                 {skillGroup.items.map((skill, skillIndex) => (
                   <motion.div
                     key={skillIndex}
@@ -73,10 +77,11 @@ export function Skills() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: skillIndex * 0.05 }}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-3"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#22D3EE]" />
-                    <span className="text-sm text-foreground/70 group-hover:text-foreground transition-colors">
+                    {/* تكبير النقطة قليلاً */}
+                    <span className="w-2 h-2 rounded-full bg-[#22D3EE]/70" />
+                    <span className="text-base text-foreground/80 group-hover:text-foreground transition-colors">
                       {skill}
                     </span>
                   </motion.div>
