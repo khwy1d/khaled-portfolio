@@ -30,39 +30,45 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 pb-20 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center pt-28 pb-20 relative overflow-hidden"
     >
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 right-20 w-72 h-72 bg-[#6366F1]/20 rounded-full blur-3xl opacity-20" />
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-[#22D3EE]/20 rounded-full blur-3xl opacity-20" />
+        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#6366F1]/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-[#22D3EE]/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05)_0%,transparent_70%)]" />
       </div>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container max-w-6xl px-4"
+        className="container max-w-7xl px-6 lg:px-8"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           
-          <div className="space-y-8 order-2 md:order-1">
-            <motion.div variants={itemVariants} className="space-y-4">
+          {/* Text Content - Spans 7 columns on large screens */}
+          <div className="space-y-10 order-2 lg:order-1 lg:col-span-7 text-center lg:text-left rtl:lg:text-right">
+            <motion.div variants={itemVariants} className="space-y-6">
               <motion.h1
-                className="text-4xl md:text-5xl font-bold text-foreground leading-tight"
+                className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-foreground tracking-tight leading-[1.1]"
                 variants={itemVariants}
               >
-                {data.name}
+                <span className="block">{data.name.split(' ')[0]}</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6366F1] to-[#22D3EE]">
+                  {data.name.split(' ').slice(1).join(' ')}
+                </span>
               </motion.h1>
 
               <motion.p
-                className="text-xl text-[#6366F1] font-semibold"
+                className="text-2xl md:text-3xl text-[#6366F1] font-bold tracking-wide"
                 variants={itemVariants}
               >
                 {data.title}
               </motion.p>
 
               <motion.p
-                className="text-lg text-foreground/70 leading-relaxed"
+                className="text-xl md:text-2xl text-foreground/60 leading-relaxed max-w-2xl mx-auto lg:mx-0"
                 variants={itemVariants}
               >
                 {data.subtitle}
@@ -71,16 +77,16 @@ export function Hero() {
 
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-5 pt-6 justify-center lg:justify-start"
             >
               <motion.a
                 href="#projects"
                 whileHover={{ scale: 1.05, x: language === "ar" ? -5 : 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#6366F1] text-white rounded-lg font-semibold hover:bg-[#6366F1]/90 transition-all group cursor-pointer"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#6366F1] text-white rounded-2xl font-bold text-lg hover:bg-[#6366F1]/90 transition-all shadow-lg shadow-[#6366F1]/25 group cursor-pointer"
               >
                 {language === "ar" ? "عرض المشاريع" : "View Projects"}
-                <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""}`} />
+                <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""}`} />
               </motion.a>
 
               <motion.a
@@ -88,91 +94,113 @@ export function Hero() {
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#22D3EE] text-[#22D3EE] rounded-lg font-semibold hover:bg-[#22D3EE]/10 transition-all"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-2xl font-bold text-lg hover:bg-[#22D3EE]/10 transition-all"
               >
-                <Download className="w-4 h-4" />
+                <Download className="w-5 h-5" />
                 {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
               </motion.a>
             </motion.div>
 
+            {/* Social Links with enhanced styling */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-wrap gap-5 pt-8 justify-center lg:justify-start"
             >
               {[
-                { href: data.linkedin, icon: Linkedin, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
-                { href: data.github, icon: Github, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20" },
-                { href: data.instagram, icon: Instagram, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
-                { href: data.x, icon: Twitter, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20" },
-                { href: data.telegram, icon: Send, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
+                { href: data.linkedin, icon: Linkedin, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20 shadow-[#6366F1]/20" },
+                { href: data.github, icon: Github, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20 shadow-[#22D3EE]/20" },
+                { href: data.instagram, icon: Instagram, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20 shadow-[#6366F1]/20" },
+                { href: data.x, icon: Twitter, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20 shadow-[#22D3EE]/20" },
+                { href: data.telegram, icon: Send, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20 shadow-[#6366F1]/20" },
               ].map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -4, scale: 1.1 }}
+                  whileHover={{ y: -6, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-300 ${social.bg} ${social.color} ${social.hover}`}
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md ${social.bg} ${social.color} ${social.hover}`}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-6 h-6" />
                 </motion.a>
               ))}
             </motion.div>
           </div>
 
+          {/* Visual Content - Spans 5 columns on large screens */}
           <motion.div
             variants={itemVariants}
-            className="relative h-80 md:h-96 w-full max-w-sm mx-auto md:max-w-none rounded-2xl overflow-hidden order-1 md:order-2"
+            className="relative lg:col-span-5 order-1 lg:order-2"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1] via-[#020617] to-[#22D3EE] opacity-20" />
-            <div className="absolute inset-0 backdrop-blur-3xl" />
+            <div className="relative w-full aspect-square max-w-[500px] mx-auto">
+              {/* Animated Background Rings */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-[-10%] border-2 border-dashed border-[#6366F1]/20 rounded-full"
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-[-20%] border border-[#22D3EE]/10 rounded-full"
+              />
 
-            <motion.div
-              animate={{
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-br from-[#6366F1] to-[#22D3EE] shadow-2xl relative">
-                <img 
-                  src="/Profil.png" 
-                  alt="Khaled Amin" 
-                  className="w-full h-full object-cover rounded-full bg-background"
+              {/* Main Image Container */}
+              <div className="relative h-full w-full rounded-3xl overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/20 via-transparent to-[#22D3EE]/20 z-10" />
+                <div className="absolute inset-0 backdrop-blur-[2px] z-0" />
+                
+                <motion.div
+                  animate={{
+                    y: [0, -20, 0],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="relative z-20 h-full w-full flex items-center justify-center p-8"
+                >
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
+                    <img 
+                      src="/Profil.png" 
+                      alt="Khaled Amin" 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
+                  </div>
+                </motion.div>
+
+                {/* Decorative floating elements */}
+                <motion.div 
+                  animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute top-10 right-10 w-12 h-12 bg-[#6366F1]/20 backdrop-blur-xl rounded-xl border border-white/10 z-30"
+                />
+                <motion.div 
+                  animate={{ y: [0, -15, 0], x: [0, -10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                  className="absolute bottom-20 left-10 w-16 h-16 bg-[#22D3EE]/20 backdrop-blur-xl rounded-2xl border border-white/10 z-30"
                 />
               </div>
-            </motion.div>
-
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 border border-[#6366F1]/20 rounded-2xl"
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-4 border border-[#22D3EE]/20 rounded-2xl"
-            />
+            </div>
           </motion.div>
 
         </div>
       </motion.div>
 
+      {/* Scroll Indicator */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block"
       >
-        <div className="w-6 h-10 border-2 border-[#6366F1]/50 rounded-full flex items-start justify-center p-2">
+        <div className="w-7 h-12 border-2 border-[#6366F1]/30 rounded-full flex items-start justify-center p-2 backdrop-blur-sm">
           <motion.div
-            animate={{ y: [0, 6, 0] }}
+            animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-2 bg-[#6366F1] rounded-full"
+            className="w-1.5 h-3 bg-gradient-to-b from-[#6366F1] to-[#22D3EE] rounded-full"
           />
         </div>
       </motion.div>
