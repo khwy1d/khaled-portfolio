@@ -282,49 +282,51 @@ export const portfolioData = {
   },
 
   experience: {
-    ar: [
-      {
-        title: "فهم المشكلة",
-        description: "تحليل متطلبات المشروع والمتطلبات الفنية",
-      },
-      {
-        title: "تصميم الحل",
-        description: "تخطيط البنية المعمارية والتصميم الفني",
-      },
-      {
-        title: "تطوير المشروع",
-        description: "تنفيذ الكود والميزات المطلوبة",
-      },
-      {
-        title: "الاختبار",
-        description: "اختبار الجودة والتحقق من الأداء",
-      },
-      {
-        title: "التسليم",
-        description: "تسليم المشروع والدعم اللاحق",
-      },
-    ],
-    en: [
-      {
-        title: "Understand the Problem",
-        description: "Analyze project requirements and technical specifications",
-      },
-      {
-        title: "Design the Solution",
-        description: "Plan architecture and technical design",
-      },
-      {
-        title: "Develop the Project",
-        description: "Implement code and required features",
-      },
-      {
-        title: "Test",
-        description: "Quality assurance and performance verification",
-      },
-      {
-        title: "Deliver",
-        description: "Project delivery and ongoing support",
-      },
-    ],
+  ar: [
+    {
+      title: "التحليل والمنطق",
+      description: "فهم المتطلبات بدقة، تحديد هيكل البيانات الأساسي، وتحليل مسارات النظام.",
+    },
+    {
+      title: "العمارة والنمذجة",
+      description: "تصميم مخططات الكيانات والعلاقات (EER) وبناء قواعد بيانات بمعايير أكاديمية صارمة.",
+    },
+    {
+      title: "التطوير الآمن",
+      description: "كتابة كود نظيف مع التركيز على سد الثغرات الأمنية (مثل XSS) والمعالجة السليمة للبيانات.",
+    },
+    {
+      title: "الفحص والتدقيق",
+      description: "إجراء مراجعة شاملة لضمان تناسق واجهة المستخدم (UI/UX) وتصحيح الأخطاء المنطقية بدقة.",
+    },
+    {
+      title: "الإطلاق والتسليم",
+      description: "تسليم حلول رقمية مستقرة وعالية الجودة تخلق قيمة عملية للمستخدمين.",
+    },
+  ],
+  en: [
+    {
+      title: "Analyze & Logic",
+      description: "Accurately understand requirements, define data structures, and analyze system flows.",
+    },
+    {
+      title: "Architect & Model",
+      description: "Design robust database schemas and strict academic EER diagrams.",
+    },
+    {
+      title: "Develop & Secure",
+      description: "Write clean code focusing on logic, XSS prevention, and strict data handling.",
+    },
+    {
+      title: "Audit & Test",
+      description: "Comprehensive review of UI/UX consistency and precise logical error debugging.",
+    },
+    {
+      title: "Deliver",
+      description: "Deploy stable, high-quality digital solutions that create practical value for end-users.",
+    },
+  ],
+},
+
   },
 };
