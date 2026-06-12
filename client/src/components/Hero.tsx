@@ -50,15 +50,14 @@ export function Hero() {
           {/* Text Content - Spans 7 columns on large screens */}
           <div className="space-y-10 order-2 lg:order-1 lg:col-span-7 text-center lg:text-left rtl:lg:text-right">
             <motion.div variants={itemVariants} className="space-y-6">
-              <motion.h1
-                className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-foreground tracking-tight leading-[1.1]"
-                variants={itemVariants}
-              >
-                <span className="block">{data.name.split(' ')[0]}</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#6366F1] to-[#22D3EE]">
-                  {data.name.split(' ').slice(1).join(' ')}
-                </span>
-              </motion.h1>
+             <motion.h1
+  className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.1]"
+  variants={itemVariants}
+>
+  <span className="text-foreground">
+    {data.name}
+  </span>
+</motion.h1>
 
               <motion.p
                 className="text-2xl md:text-3xl text-[#6366F1] font-bold tracking-wide"
