@@ -1,11 +1,29 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Linkedin, Github, Instagram, Twitter, Send } from "lucide-react";
+import {
+  ArrowRight,
+  Download,
+  Linkedin,
+  Github,
+  Instagram,
+  Twitter,
+  Send,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
 
 export function Hero() {
   const { language } = useLanguage();
   const data = portfolioData.personal[language];
+
+  const titleText =
+    language === "ar"
+      ? "أبني تجارب ويب حديثة وحلولاً رقمية فعّالة"
+      : "Building modern web experiences and digital solutions";
+
+  const subtitleText =
+    language === "ar"
+      ? "طالب ذكاء اصطناعي وعلوم بيانات، شغوف بتحويل الأفكار إلى منتجات حقيقية من خلال التصميم والتطوير والتعلم المستمر."
+      : "AI & Data Science student passionate about creating meaningful products through design, development, and continuous learning.";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,7 +48,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 pb-20 relative overflow-hidden"
+      className="min-h-[100svh] flex items-center justify-center pt-24 pb-20 lg:pt-32 lg:pb-24 relative overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 right-20 w-72 h-72 bg-[#6366F1]/20 rounded-full blur-3xl opacity-20" />
@@ -43,32 +61,42 @@ export function Hero() {
         animate="visible"
         className="container max-w-6xl px-4"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-12 lg:gap-20 items-center">
+          {/* LEFT */}
           <div className="space-y-8 order-2 md:order-1">
             <motion.div variants={itemVariants} className="space-y-4">
+              
+              {/* Badge */}
+              <motion.div
+                variants={itemVariants}
+                className="inline-flex items-center px-4 py-2 rounded-full border border-[#6366F1]/20 bg-[#6366F1]/10 text-sm text-foreground/80 w-fit"
+              >
+                🎓 AI & Data Science Student
+              </motion.div>
+
               <motion.h1
-                className="text-4xl md:text-5xl font-bold text-foreground leading-tight"
+                className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-tight text-foreground"
                 variants={itemVariants}
               >
                 {data.name}
               </motion.h1>
 
               <motion.p
-                className="text-xl text-[#6366F1] font-semibold"
+                className="text-xl lg:text-2xl font-semibold text-[#6366F1] max-w-xl"
                 variants={itemVariants}
               >
-                {data.title}
+                {titleText}
               </motion.p>
 
               <motion.p
-                className="text-lg text-foreground/70 leading-relaxed"
+                className="text-base lg:text-lg leading-8 text-foreground/65 max-w-2xl"
                 variants={itemVariants}
               >
-                {data.subtitle}
+                {subtitleText}
               </motion.p>
             </motion.div>
 
+            {/* Buttons */}
             <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 pt-4"
@@ -79,8 +107,14 @@ export function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#6366F1] text-white rounded-lg font-semibold hover:bg-[#6366F1]/90 transition-all group cursor-pointer"
               >
-                {language === "ar" ? "عرض المشاريع" : "View Projects"}
-                <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""}`} />
+                {language === "ar" ? "استكشف مشاريعي" : "Explore Projects"}
+                <ArrowRight
+                  className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${
+                    language === "ar"
+                      ? "rotate-180 group-hover:-translate-x-1"
+                      : ""
+                  }`}
+                />
               </motion.a>
 
               <motion.a
@@ -91,20 +125,55 @@ export function Hero() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#22D3EE] text-[#22D3EE] rounded-lg font-semibold hover:bg-[#22D3EE]/10 transition-all"
               >
                 <Download className="w-4 h-4" />
-                {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
+                {language === "ar"
+                  ? "تحميل السيرة الذاتية"
+                  : "Download CV"}
               </motion.a>
             </motion.div>
 
+            {/* Social */}
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-4"
             >
               {[
-                { href: data.linkedin, icon: Linkedin, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
-                { href: data.github, icon: Github, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20" },
-                { href: data.instagram, icon: Instagram, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
-                { href: data.x, icon: Twitter, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20" },
-                { href: data.telegram, icon: Send, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20" },
+                {
+                  href: data.linkedin,
+                  icon: Linkedin,
+                  color: "text-[#6366F1]",
+                  bg: "bg-[#6366F1]/10",
+                  hover: "hover:bg-[#6366F1]/20",
+                  size: "large",
+                },
+                {
+                  href: data.github,
+                  icon: Github,
+                  color: "text-[#22D3EE]",
+                  bg: "bg-[#22D3EE]/10",
+                  hover: "hover:bg-[#22D3EE]/20",
+                  size: "large",
+                },
+                {
+                  href: data.instagram,
+                  icon: Instagram,
+                  color: "text-[#6366F1]",
+                  bg: "bg-[#6366F1]/10",
+                  hover: "hover:bg-[#6366F1]/20",
+                },
+                {
+                  href: data.x,
+                  icon: Twitter,
+                  color: "text-[#22D3EE]",
+                  bg: "bg-[#22D3EE]/10",
+                  hover: "hover:bg-[#22D3EE]/20",
+                },
+                {
+                  href: data.telegram,
+                  icon: Send,
+                  color: "text-[#6366F1]",
+                  bg: "bg-[#6366F1]/10",
+                  hover: "hover:bg-[#6366F1]/20",
+                },
               ].map((social, index) => (
                 <motion.a
                   key={index}
@@ -113,7 +182,13 @@ export function Hero() {
                   rel="noopener noreferrer"
                   whileHover={{ y: -4, scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-300 ${social.bg} ${social.color} ${social.hover}`}
+                  className={`${
+                    social.size === "large"
+                      ? "w-12 h-12"
+                      : "w-11 h-11"
+                  } rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                    social.bg
+                  } ${social.color} ${social.hover}`}
                 >
                   <social.icon className="w-5 h-5" />
                 </motion.a>
@@ -121,6 +196,7 @@ export function Hero() {
             </motion.div>
           </div>
 
+          {/* RIGHT IMAGE */}
           <motion.div
             variants={itemVariants}
             className="relative h-80 md:h-96 w-full max-w-sm mx-auto md:max-w-none rounded-2xl overflow-hidden order-1 md:order-2"
@@ -129,9 +205,7 @@ export function Hero() {
             <div className="absolute inset-0 backdrop-blur-3xl" />
 
             <motion.div
-              animate={{
-                y: [0, -15, 0],
-              }}
+              animate={{ y: [0, -8, 0] }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
@@ -140,9 +214,9 @@ export function Hero() {
               className="absolute inset-0 flex items-center justify-center"
             >
               <div className="w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-br from-[#6366F1] to-[#22D3EE] shadow-2xl relative">
-                <img 
-                  src="/Profil.png" 
-                  alt="Khaled Amin" 
+                <img
+                  src="/Profil.png"
+                  alt="Khaled Amin"
                   className="w-full h-full object-cover rounded-full bg-background"
                 />
               </div>
@@ -159,23 +233,8 @@ export function Hero() {
               className="absolute inset-4 border border-[#22D3EE]/20 rounded-2xl"
             />
           </motion.div>
-
-        </div>
-      </motion.div>
-
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-[#6366F1]/50 rounded-full flex items-start justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-2 bg-[#6366F1] rounded-full"
-          />
         </div>
       </motion.div>
     </section>
   );
-}
+                }
