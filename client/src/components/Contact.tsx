@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Github } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Twitter, Youtube, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
 import { useState } from "react";
@@ -34,24 +34,37 @@ export function Contact() {
     },
   ];
 
+  // تم إضافة جميع مواقع التواصل بما فيها يوتيوب
   const socialLinks = [
     {
-      icon: Linkedin,
-      href: data.linkedin,
-      label: "LinkedIn",
-      color: "#6366F1",
+      icon: Github,
+      href: data.github || "#",
+      label: "GitHub",
     },
     {
-      icon: Github,
-      href: data.github,
-      label: "GitHub",
-      color: "#22D3EE",
+      icon: Linkedin,
+      href: data.linkedin || "#",
+      label: "LinkedIn",
+    },
+    {
+      icon: Twitter,
+      href: data.twitter || "#",
+      label: "Twitter",
+    },
+    {
+      icon: Instagram,
+      href: data.instagram || "#",
+      label: "Instagram",
+    },
+    {
+      icon: Youtube,
+      href: data.youtube || "#",
+      label: "YouTube",
     },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Create mailto link with form data
     const subject = encodeURIComponent(
       language === "ar" ? "رسالة جديدة من موقعي" : "New Message from My Portfolio"
     );
@@ -87,7 +100,6 @@ export function Contact() {
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl opacity-20 -z-10" />
       <div className="absolute bottom-1/2 left-0 w-96 h-96 bg-[#22D3EE]/10 rounded-full blur-3xl opacity-20 -z-10" />
 
-      {/* تم توسيع الحاوية لتطابق باقي الأقسام */}
       <div className="container max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -107,7 +119,6 @@ export function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          // زيادة المسافات بين الأعمدة في الشاشات الكبيرة
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
         >
           {/* Contact Information */}
@@ -149,7 +160,8 @@ export function Contact() {
               <p className="text-sm lg:text-base font-semibold text-foreground/70 mb-4 lg:mb-5">
                 {language === "ar" ? "تابعني على" : "Follow Me"}
               </p>
-              <div className="flex gap-4 lg:gap-5">
+              {/* إضافة flex-wrap لضمان الترتيب الجيد إذا زاد عدد الأيقونات */}
+              <div className="flex flex-wrap gap-4 lg:gap-5">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon;
                   return (
@@ -158,6 +170,7 @@ export function Contact() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      title={social.label}
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#6366F1]/10 flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1]/20 hover:shadow-md hover:shadow-[#6366F1]/10 transition-all"
@@ -248,4 +261,5 @@ export function Contact() {
       </div>
     </section>
   );
-}
+      }
+          
