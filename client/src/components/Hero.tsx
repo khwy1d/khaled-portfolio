@@ -42,14 +42,15 @@ export function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container max-w-4xl"
+        {/* تم تغيير الحد الأقصى للعرض إلى max-w-6xl لتفادي الحواف الكبيرة في الشاشات العريضة */}
+        className="container max-w-6xl px-4"
       >
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
+        {/* تم تعديل الترتيب ليصبح متجاوباً بالكامل ومريحاً بصرياً في الحواسب والهواتف */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          
+          {/* الجانب الأيسر: محتوى النصوص والأزرار */}
+          <div className="space-y-8 order-2 md:order-1">
             <motion.div variants={itemVariants} className="space-y-4">
-              {/* تم حذف قسم الترحيب من هنا بناءً على طلبك */}
-              
               <motion.h1
                 className="text-4xl md:text-5xl font-bold text-foreground leading-tight"
                 variants={itemVariants}
@@ -79,12 +80,12 @@ export function Hero() {
             >
               <motion.a
                 href="#projects"
-                whileHover={{ scale: 1.05, x: 5 }}
+                whileHover={{ scale: 1.05, x: language === "ar" ? -5 : 5 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#6366F1] text-white rounded-lg font-semibold hover:bg-[#6366F1]/90 transition-all group cursor-pointer"
               >
                 {language === "ar" ? "عرض المشاريع" : "View Projects"}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""}`} />
               </motion.a>
 
               <motion.a
@@ -99,7 +100,7 @@ export function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Social Links Updated with Real Icons */}
+            {/* Social Links */}
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-4"
@@ -126,17 +127,17 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Side - Profile Card */}
+          {/* الجانب الأيمن: إطار الصورة الشخصية المرتفعة مع حركة مرنة */}
           <motion.div
             variants={itemVariants}
-            className="relative h-96 md:h-full min-h-96 rounded-2xl overflow-hidden"
+            className="relative h-80 md:h-96 w-full max-w-sm mx-auto md:max-w-none rounded-2xl overflow-hidden order-1 md:order-2"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1] via-[#020617] to-[#22D3EE] opacity-20" />
             <div className="absolute inset-0 backdrop-blur-3xl" />
 
-                        <motion.div
+            <motion.div
               animate={{
-                y: [0, -20, 0],
+                y: [0, -15, 0],
               }}
               transition={{
                 duration: 4,
@@ -145,8 +146,8 @@ export function Hero() {
               }}
               className="absolute inset-0 flex items-center justify-center"
             >
-              {/* قمنا هنا بوضع الصورة مع إعطائها إطار دائري وتأثير لوني خفيف */}
-              <div className="w-56 h-56 rounded-full p-1 bg-gradient-to-br from-[#6366F1] to-[#22D3EE] shadow-2xl relative">
+              {/* إطار دائري متوهج يتجاوب مع أبعاد الصورة الثابتة المحفوظة في المجلد العام */}
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-br from-[#6366F1] to-[#22D3EE] shadow-2xl relative">
                 <img 
                   src="/Profil.png" 
                   alt="Khaled Amin" 
@@ -155,8 +156,7 @@ export function Hero() {
               </div>
             </motion.div>
 
-
-            {/* Floating Elements */}
+            {/* Floating Elements (أقواس التصميم المتوهجة المحيطة بالصورة) */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -168,6 +168,7 @@ export function Hero() {
               className="absolute inset-4 border border-[#22D3EE]/20 rounded-2xl"
             />
           </motion.div>
+
         </div>
       </motion.div>
 
@@ -187,5 +188,5 @@ export function Hero() {
       </motion.div>
     </section>
   );
-              }
-              
+                           }
+                 
