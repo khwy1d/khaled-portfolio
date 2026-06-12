@@ -3,6 +3,7 @@ import { motion, useInView, animate } from "framer-motion";
 import { FolderGit2, Cpu } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
+import { FolderGit2, Cpu, Download } from "lucide-react";
 
 // مكون فرعي لصناعة العداد المتحرك
 function AnimatedCounter({ from, to, duration = 0.8 }: { from: number; to: number; duration?: number }) {
