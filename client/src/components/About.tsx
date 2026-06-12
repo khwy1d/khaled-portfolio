@@ -91,7 +91,7 @@ export function About() {
                 <Download className="w-5 h-5" />
                 {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
               </motion.a>
-            </motion.div>
+            
 
             {/* Stat Cards */}
             <div className="grid grid-cols-2 gap-4 pt-4">
