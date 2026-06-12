@@ -81,16 +81,30 @@ export function About() {
               {data.bio}
             </p>
 
+            // ... (باقي كود About.tsx)
+          <motion.div variants={itemVariants} className="space-y-6 lg:col-span-6">
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              {data.bio}
+            </p>
+
             <motion.a
-                href={data.cv}
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-2xl font-bold text-lg hover:bg-[#22D3EE]/10 transition-all"
-              >
-                <Download className="w-5 h-5" />
-                {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
-              </motion.a>
+              href={data.cv}
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-2xl font-bold text-lg hover:bg-[#22D3EE]/10 transition-all"
+            >
+              <Download className="w-5 h-5" />
+              {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
+            </motion.a>
+
+            {/* Stat Cards تم تصحيح مكان الإغلاق هنا */}
+            <div className="grid grid-cols-2 gap-4 pt-4">
+               {/* ... محتوى الكاردات كما هو */}
+            </div>
+          </motion.div>
+// ...
+
             
 
             {/* Stat Cards */}
