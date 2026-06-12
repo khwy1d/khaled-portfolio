@@ -5,14 +5,16 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
 
 // مكون فرعي لصناعة العداد المتحرك
-function AnimatedCounter({ from, to, duration = 2 }: { from: number; to: number; duration?: number }) {
+function AnimatedCounter({ from, to, duration = 0.8 }: { from: number; to: number; duration?: number }) {
   const nodeRef = useRef<HTMLSpanElement>(null);
   const inView = useInView(nodeRef, { once: true });
 
   useEffect(() => {
     if (inView) {
+      // تم تقليل الـ duration الافتراضي إلى 0.8 ثانية ليعطي حركة سريعة وخاطفة للعين
       const controls = animate(from, to, {
         duration: duration,
+        ease: "easeOut",
         onUpdate(value) {
           if (nodeRef.current) {
             nodeRef.current.textContent = Math.round(value).toString();
@@ -76,18 +78,25 @@ export function About() {
               {data.bio}
             </p>
 
-            {/* Stat Cards with Icons and Animated Counters */}
+            {/* Stat Cards */}
             <div className="grid grid-cols-2 gap-4 pt-4">
               <motion.div
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="p-5 rounded-xl bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all">
+                {/* تم تعديل الاتجاه: top-0 left-0 في العربية، و top-0 right-0 في الإنجليزية */}
+                <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
+                  language === "ar" ? "left-0" : "right-0"
+                }`}>
                   <FolderGit2 className="w-12 h-12 text-[#6366F1]" />
                 </div>
-                <p className="text-3xl font-bold text-[#6366F1] flex items-center mb-1">
-                  <AnimatedCounter from={0} to={4} duration={2} />
+                
+                {/* اتجاه النص يتغير حسب اللغة لضمان بقاء إشارة الـ + متناسقة مع الرقم */}
+                <p className={`text-3xl font-bold text-[#6366F1] flex items-center mb-1 ${
+                  language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
+                }`}>
                   <span>+</span>
+                  <AnimatedCounter from={0} to={4} duration={0.6} />
                 </p>
                 <p className="text-sm font-medium text-foreground/70">
                   {language === "ar" ? "مشاريع منجزة" : "Completed Projects"}
@@ -98,12 +107,18 @@ export function About() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="p-5 rounded-xl bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all">
+                {/* محاذاة الأيقونة تتجاوب مع اتجاه اللغة بشكل كامل */}
+                <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
+                  language === "ar" ? "left-0" : "right-0"
+                }`}>
                   <Cpu className="w-12 h-12 text-[#22D3EE]" />
                 </div>
-                <p className="text-3xl font-bold text-[#22D3EE] flex items-center mb-1">
-                  <AnimatedCounter from={0} to={6} duration={2.5} />
+                
+                <p className={`text-3xl font-bold text-[#22D3EE] flex items-center mb-1 ${
+                  language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
+                }`}>
                   <span>+</span>
+                  <AnimatedCounter from={0} to={6} duration={0.8} />
                 </p>
                 <p className="text-sm font-medium text-foreground/70">
                   {language === "ar" ? "مجالات تقنية" : "Technical Skills"}
@@ -190,5 +205,5 @@ export function About() {
       </div>
     </section>
   );
-                    }
-    
+                  }
+                    
