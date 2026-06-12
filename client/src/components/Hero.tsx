@@ -134,7 +134,7 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1] via-[#020617] to-[#22D3EE] opacity-20" />
             <div className="absolute inset-0 backdrop-blur-3xl" />
 
-            <motion.div
+                        <motion.div
               animate={{
                 y: [0, -20, 0],
               }}
@@ -145,10 +145,16 @@ export function Hero() {
               }}
               className="absolute inset-0 flex items-center justify-center"
             >
-              <div className="w-48 h-48 rounded-full bg-gradient-to-br from-[#6366F1] to-[#22D3EE] flex items-center justify-center text-white text-6xl font-bold shadow-2xl">
-                K.A
+              {/* قمنا هنا بوضع الصورة مع إعطائها إطار دائري وتأثير لوني خفيف */}
+              <div className="w-56 h-56 rounded-full p-1 bg-gradient-to-br from-[#6366F1] to-[#22D3EE] shadow-2xl relative">
+                <img 
+                  src="/Profil.png" 
+                  alt="Khaled Amin" 
+                  className="w-full h-full object-cover rounded-full bg-background"
+                />
               </div>
             </motion.div>
+
 
             {/* Floating Elements */}
             <motion.div
