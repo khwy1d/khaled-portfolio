@@ -87,7 +87,8 @@ export function Contact() {
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl opacity-20 -z-10" />
       <div className="absolute bottom-1/2 left-0 w-96 h-96 bg-[#22D3EE]/10 rounded-full blur-3xl opacity-20 -z-10" />
 
-      <div className="container max-w-5xl">
+      {/* تم توسيع الحاوية لتطابق باقي الأقسام */}
+      <div className="container max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -106,18 +107,19 @@ export function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-12"
+          // زيادة المسافات بين الأعمدة في الشاشات الكبيرة
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
         >
           {/* Contact Information */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            <p className="text-lg text-foreground/80">
+          <motion.div variants={itemVariants} className="space-y-8 lg:space-y-10">
+            <p className="text-lg lg:text-xl text-foreground/80 leading-relaxed">
               {language === "ar"
                 ? "أنا مهتم بالفرص الجديدة والتعاون. لا تتردد في التواصل معي!"
                 : "I'm interested in new opportunities and collaborations. Feel free to reach out!"}
             </p>
 
             {/* Contact Info Cards */}
-            <div className="space-y-4">
+            <div className="space-y-4 lg:space-y-5">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 return (
@@ -126,14 +128,14 @@ export function Contact() {
                     href={info.href}
                     variants={itemVariants}
                     whileHover={{ x: language === "ar" ? -5 : 5 }}
-                    className="flex items-start gap-4 p-4 rounded-lg bg-background border border-border hover:border-[#6366F1]/50 transition-all group"
+                    className="flex items-start gap-4 lg:gap-5 p-5 lg:p-6 rounded-xl bg-background border border-border hover:border-[#6366F1]/50 hover:shadow-lg hover:shadow-[#6366F1]/5 transition-all group"
                   >
-                    <div className="w-12 h-12 rounded-lg bg-[#6366F1]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#6366F1]/20 transition-colors">
-                      <Icon className="w-6 h-6 text-[#6366F1]" />
+                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#6366F1]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#6366F1]/20 transition-colors">
+                      <Icon className="w-6 h-6 lg:w-7 lg:h-7 text-[#6366F1]" />
                     </div>
-                    <div>
-                      <p className="text-sm text-foreground/70">{info.label}</p>
-                      <p className="font-semibold text-foreground group-hover:text-[#6366F1] transition-colors">
+                    <div className="pt-1">
+                      <p className="text-sm lg:text-base text-foreground/70 mb-1">{info.label}</p>
+                      <p className="font-semibold text-base lg:text-lg text-foreground group-hover:text-[#6366F1] transition-colors">
                         {info.value}
                       </p>
                     </div>
@@ -143,11 +145,11 @@ export function Contact() {
             </div>
 
             {/* Social Links */}
-            <div>
-              <p className="text-sm font-semibold text-foreground/70 mb-4">
+            <div className="pt-2">
+              <p className="text-sm lg:text-base font-semibold text-foreground/70 mb-4 lg:mb-5">
                 {language === "ar" ? "تابعني على" : "Follow Me"}
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 lg:gap-5">
                 {socialLinks.map((social, index) => {
                   const Icon = social.icon;
                   return (
@@ -158,9 +160,9 @@ export function Contact() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-lg bg-[#6366F1]/10 flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1]/20 transition-colors"
+                      className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#6366F1]/10 flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1]/20 hover:shadow-md hover:shadow-[#6366F1]/10 transition-all"
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-5 h-5 lg:w-6 lg:h-6" />
                     </motion.a>
                   );
                 })}
@@ -172,38 +174,38 @@ export function Contact() {
           <motion.form
             variants={itemVariants}
             onSubmit={handleSubmit}
-            className="space-y-4"
+            className="space-y-5 lg:space-y-6 bg-background p-6 lg:p-8 rounded-2xl border border-border shadow-sm"
           >
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-sm lg:text-base font-medium text-foreground mb-2 lg:mb-3">
                 {language === "ar" ? "الاسم" : "Name"}
               </label>
               <motion.input
-                whileFocus={{ scale: 1.02 }}
+                whileFocus={{ scale: 1.01 }}
                 type="text"
                 required
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-[#6366F1] focus:outline-none transition-colors"
+                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1] focus:outline-none transition-all"
                 placeholder={language === "ar" ? "أدخل اسمك" : "Enter your name"}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-sm lg:text-base font-medium text-foreground mb-2 lg:mb-3">
                 {language === "ar" ? "البريد الإلكتروني" : "Email"}
               </label>
               <motion.input
-                whileFocus={{ scale: 1.02 }}
+                whileFocus={{ scale: 1.01 }}
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-[#6366F1] focus:outline-none transition-colors"
+                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1] focus:outline-none transition-all"
                 placeholder={
                   language === "ar"
                     ? "أدخل بريدك الإلكتروني"
@@ -213,18 +215,18 @@ export function Contact() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-sm lg:text-base font-medium text-foreground mb-2 lg:mb-3">
                 {language === "ar" ? "الرسالة" : "Message"}
               </label>
               <motion.textarea
-                whileFocus={{ scale: 1.02 }}
+                whileFocus={{ scale: 1.01 }}
                 required
                 value={formData.message}
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
                 rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-[#6366F1] focus:outline-none transition-colors resize-none"
+                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1] focus:outline-none transition-all resize-none"
                 placeholder={
                   language === "ar"
                     ? "أدخل رسالتك هنا"
@@ -234,10 +236,10 @@ export function Contact() {
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full px-6 py-3 bg-gradient-to-r from-[#6366F1] to-[#22D3EE] text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+              className="w-full px-6 py-4 mt-2 bg-gradient-to-r from-[#6366F1] to-[#22D3EE] text-white rounded-xl font-bold text-base lg:text-lg hover:shadow-lg hover:shadow-[#6366F1]/25 transition-all"
             >
               {language === "ar" ? "إرسال الرسالة" : "Send Message"}
             </motion.button>
