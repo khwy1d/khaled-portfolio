@@ -284,47 +284,58 @@ export const portfolioData = {
   experience: {
   ar: [
     {
-      title: "التحليل والمنطق",
-      description: "فهم المتطلبات بدقة، تحديد هيكل البيانات الأساسي، وتحليل مسارات النظام.",
+      title: "الفهم والتخطيط",
+      description:
+        "أبدأ بفهم الفكرة وتحليل احتياجات المستخدم، ثم أحدد المتطلبات الوظيفية وغير الوظيفية لرسم تصور واضح للمشروع.",
     },
     {
-      title: "العمارة والنمذجة",
-      description: "تصميم مخططات الكيانات والعلاقات (EER) وبناء قواعد بيانات بمعايير أكاديمية صارمة.",
+      title: "الهيكلة والتنظيم",
+      description:
+        "أصمم هيكل البيانات والعلاقات عند الحاجة، لبناء أساس متماسك وقابل للتطوير.",
     },
     {
-      title: "التطوير الآمن",
-      description: "كتابة كود نظيف مع التركيز على سد الثغرات الأمنية (مثل XSS) والمعالجة السليمة للبيانات.",
+      title: "التصميم والتجربة",
+      description:
+        "أهتم بتصميم واجهات واضحة وسهلة الاستخدام، مع التركيز على تجربة المستخدم والتجاوب مع مختلف الأجهزة.",
     },
     {
-      title: "الفحص والتدقيق",
-      description: "إجراء مراجعة شاملة لضمان تناسق واجهة المستخدم (UI/UX) وتصحيح الأخطاء المنطقية بدقة.",
+      title: "التطوير والتنفيذ",
+      description:
+        "أحوّل الأفكار والتصاميم إلى حلول عملية من خلال كتابة كود منظم والاهتمام بالتفاصيل.",
     },
     {
-      title: "الإطلاق والتسليم",
-      description: "تسليم حلول رقمية مستقرة وعالية الجودة تخلق قيمة عملية للمستخدمين.",
+      title: "الاختبار والتسليم",
+      description:
+        "أراجع وأختبر المشروع من مختلف الجوانب لضمان جودة النتيجة قبل تسليمها أو نشرها.",
     },
   ],
+
   en: [
     {
-      title: "Analyze & Logic",
-      description: "Accurately understand requirements, define data structures, and analyze system flows.",
+      title: "Discover & Plan",
+      description:
+        "Understand the idea, analyze user needs, and define both functional and non-functional requirements to establish a clear project direction.",
     },
     {
-      title: "Architect & Model",
-      description: "Design robust database schemas and strict academic EER diagrams.",
+      title: "Structure",
+      description:
+        "Design data structures and relationships when needed to build a solid and scalable foundation.",
     },
     {
-      title: "Develop & Secure",
-      description: "Write clean code focusing on logic, XSS prevention, and strict data handling.",
+      title: "Design",
+      description:
+        "Create intuitive and responsive interfaces with a strong focus on usability and user experience.",
     },
     {
-      title: "Audit & Test",
-      description: "Comprehensive review of UI/UX consistency and precise logical error debugging.",
+      title: "Build",
+      description:
+        "Transform ideas and designs into practical solutions through organized development and attention to detail.",
     },
     {
-      title: "Deliver",
-      description: "Deploy stable, high-quality digital solutions that create practical value for end-users.",
+      title: "Refine & Deliver",
+      description:
+        "Review, test, and refine the project from different perspectives to ensure a reliable final outcome before launch or delivery.",
     },
   ],
-},
+  }
 };
