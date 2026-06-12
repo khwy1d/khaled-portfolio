@@ -51,7 +51,8 @@ export function About() {
       {/* Background Elements */}
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl opacity-20 -z-10" />
 
-      <div className="container max-w-5xl">
+      {/* تم التعديل هنا ليكون العرض أوسع ويطابق الـ Hero */}
+      <div className="container max-w-7xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,9 +72,11 @@ export function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-12 mb-16 items-center"
+          // تم التعديل هنا لاستخدام نظام 12 عمود
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16 items-center"
         >
-          <motion.div variants={itemVariants} className="space-y-6">
+          {/* تأخذ 6 أعمدة في الشاشات الكبيرة */}
+          <motion.div variants={itemVariants} className="space-y-6 lg:col-span-6">
             <p className="text-lg text-foreground/80 leading-relaxed">
               {data.bio}
             </p>
@@ -127,8 +130,8 @@ export function About() {
             </div>
           </motion.div>
 
-          {/* Experience Process */}
-          <motion.div variants={itemVariants} className="space-y-4">
+          {/* Experience Process - تأخذ 6 أعمدة في الشاشات الكبيرة */}
+          <motion.div variants={itemVariants} className="space-y-4 lg:col-span-6">
             {experienceData.map((exp, index) => (
               <motion.div
                 key={index}
@@ -159,28 +162,31 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-2 gap-8"
+          // استخدام الشبكة الواسعة هنا أيضاً
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16"
         >
           {/* Education */}
-          <div>
+          <div className="lg:col-span-6">
             <h3 className="text-xl font-bold text-foreground mb-6">
               {language === "ar" ? "التعليم" : "Education"}
             </h3>
-            {portfolioData.education[language].map((edu, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ x: language === "ar" ? -5 : 5 }}
-                className="p-4 rounded-lg bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all"
-              >
-                <p className="font-semibold text-foreground">{edu.degree}</p>
-                <p className="text-sm text-foreground/70 mt-1">{edu.school}</p>
-                <p className="text-xs text-[#6366F1] mt-2">{edu.period}</p>
-              </motion.div>
-            ))}
+            <div className="space-y-4">
+              {portfolioData.education[language].map((edu, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ x: language === "ar" ? -5 : 5 }}
+                  className="p-4 rounded-lg bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all"
+                >
+                  <p className="font-semibold text-foreground">{edu.degree}</p>
+                  <p className="text-sm text-foreground/70 mt-1">{edu.school}</p>
+                  <p className="text-xs text-[#6366F1] mt-2">{edu.period}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* Languages */}
-          <div>
+          <div className="lg:col-span-6">
             <h3 className="text-xl font-bold text-foreground mb-6">
               {language === "ar" ? "اللغات" : "Languages"}
             </h3>
@@ -205,5 +211,4 @@ export function About() {
       </div>
     </section>
   );
-                  }
-                    
+}
