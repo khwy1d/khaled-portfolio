@@ -88,7 +88,7 @@ export function Hero() {
                 <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""}`} />
               </motion.a>
 
-              
+              </motion.div>
 
             {/* Social Links with enhanced styling */}
             <motion.div
