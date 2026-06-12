@@ -47,10 +47,6 @@ export function Contact() {
       label: "GitHub",
       color: "#22D3EE",
     },
-     { href: data.instagram, icon: Instagram, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20 shadow-[#6366F1]/20" },
-                { href: data.x, icon: Twitter, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20 shadow-[#22D3EE]/20" },
-                { href: data.telegram, icon: Send, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20 shadow-[#6366F1]/20" },
-              
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
