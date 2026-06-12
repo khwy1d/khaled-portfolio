@@ -32,7 +32,6 @@ export function Hero() {
       id="home"
       className="min-h-screen flex items-center justify-center pt-20 pb-20 relative overflow-hidden"
     >
-      {/* Background Neural Network Effect */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 right-20 w-72 h-72 bg-[#6366F1]/20 rounded-full blur-3xl opacity-20" />
         <div className="absolute bottom-20 left-20 w-72 h-72 bg-[#22D3EE]/20 rounded-full blur-3xl opacity-20" />
@@ -42,13 +41,10 @@ export function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        {/* تم تغيير الحد الأقصى للعرض إلى max-w-6xl لتفادي الحواف الكبيرة في الشاشات العريضة */}
         className="container max-w-6xl px-4"
       >
-        {/* تم تعديل الترتيب ليصبح متجاوباً بالكامل ومريحاً بصرياً في الحواسب والهواتف */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           
-          {/* الجانب الأيسر: محتوى النصوص والأزرار */}
           <div className="space-y-8 order-2 md:order-1">
             <motion.div variants={itemVariants} className="space-y-4">
               <motion.h1
@@ -73,7 +69,6 @@ export function Hero() {
               </motion.p>
             </motion.div>
 
-            {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 pt-4"
@@ -100,7 +95,6 @@ export function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Social Links */}
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4 pt-4"
@@ -127,7 +121,6 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* الجانب الأيمن: إطار الصورة الشخصية المرتفعة مع حركة مرنة */}
           <motion.div
             variants={itemVariants}
             className="relative h-80 md:h-96 w-full max-w-sm mx-auto md:max-w-none rounded-2xl overflow-hidden order-1 md:order-2"
@@ -146,7 +139,6 @@ export function Hero() {
               }}
               className="absolute inset-0 flex items-center justify-center"
             >
-              {/* إطار دائري متوهج يتجاوب مع أبعاد الصورة الثابتة المحفوظة في المجلد العام */}
               <div className="w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-br from-[#6366F1] to-[#22D3EE] shadow-2xl relative">
                 <img 
                   src="/Profil.png" 
@@ -156,7 +148,6 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* Floating Elements (أقواس التصميم المتوهجة المحيطة بالصورة) */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -172,7 +163,6 @@ export function Hero() {
         </div>
       </motion.div>
 
-      {/* Scroll Indicator */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
@@ -188,5 +178,5 @@ export function Hero() {
       </motion.div>
     </section>
   );
-                           }
-                 
+                }
+
