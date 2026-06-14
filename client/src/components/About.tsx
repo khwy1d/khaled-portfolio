@@ -220,3 +220,4 @@ export function About() {
       </div>
     </section>
   );
+}
