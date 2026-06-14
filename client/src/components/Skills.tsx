@@ -95,7 +95,7 @@ export function Experience() {
               </div>
             </motion.div>
           ))}
-        </motion.grid>
+        </motion.div>
 
         {/* Timeline View - Alternative for smaller screens */}
         <div className="lg:hidden mt-16">
