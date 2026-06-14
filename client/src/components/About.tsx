@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView, animate } from "framer-motion";
-import { FolderGit2, Cpu } from "lucide-react";
+import { FolderGit2, Cpu, Download } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
-import { FolderGit2, Cpu, Download } from "lucide-react";
 
 // مكون فرعي لصناعة العداد المتحرك
 function AnimatedCounter({ from, to, duration = 0.8 }: { from: number; to: number; duration?: number }) {
@@ -12,7 +11,6 @@ function AnimatedCounter({ from, to, duration = 0.8 }: { from: number; to: numbe
 
   useEffect(() => {
     if (inView) {
-      // تم تقليل الـ duration الافتراضي إلى 0.8 ثانية ليعطي حركة سريعة وخاطفة للعين
       const controls = animate(from, to, {
         duration: duration,
         ease: "easeOut",
@@ -48,43 +46,36 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-20 bg-background relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-32 bg-background relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl opacity-20 -z-10" />
 
-      {/* تم التعديل هنا ليكون العرض أوسع ويطابق الـ Hero */}
-      <div className="container max-w-7xl px-6 lg:px-8">
+      <div className="container max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 lg:mb-20"
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
             {language === "ar" ? "عني" : "About Me"}
           </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#6366F1] to-[#22D3EE]" />
+          <div className="w-12 h-1.5 bg-gradient-to-r from-[#6366F1] to-[#22D3EE] rounded-full" />
         </motion.div>
 
-        {/* Bio Section */}
+        {/* MAIN LAYOUT - Bio + Stats + Experience */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          // تم التعديل هنا لاستخدام نظام 12 عمود
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16 items-center"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mb-16 lg:mb-20 items-start"
         >
-          {/* تأخذ 6 أعمدة في الشاشات الكبيرة */}
-          <motion.div variants={itemVariants} className="space-y-6 lg:col-span-6">
-            <p className="text-lg text-foreground/80 leading-relaxed">
-              {data.bio}
-            </p>
-
-            
-          <motion.div variants={itemVariants} className="space-y-6 lg:col-span-6">
-            <p className="text-lg text-foreground/80 leading-relaxed">
+          {/* LEFT: Bio Section - Takes 1 column on lg */}
+          <motion.div variants={itemVariants} className="lg:col-span-1 space-y-6">
+            <p className="text-base lg:text-lg text-foreground/80 leading-relaxed">
               {data.bio}
             </p>
 
@@ -93,85 +84,79 @@ export function About() {
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-2xl font-bold text-lg hover:bg-[#22D3EE]/10 transition-all"
+              className="inline-flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base hover:bg-[#22D3EE]/10 transition-all"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-4 h-4 lg:w-5 lg:h-5" />
               {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
             </motion.a>
-
-            {/* Stat Cards تم تصحيح مكان الإغلاق هنا */}
-            <div className="grid grid-cols-2 gap-4 pt-4">
-               {/* ... محتوى الكاردات كما هو */}
-            </div>
           </motion.div>
-            
 
-            {/* Stat Cards */}
-            <div className="grid grid-cols-2 gap-4 pt-4">
+          {/* CENTER: Stat Cards - Takes 1 column on lg */}
+          <motion.div variants={itemVariants} className="lg:col-span-1">
+            <div className="grid grid-cols-2 gap-4 lg:gap-6">
+              {/* Projects Card */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="p-5 rounded-xl bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
+                className="p-5 lg:p-6 rounded-xl bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
               >
-                {/* تم تعديل الاتجاه: top-0 left-0 في العربية، و top-0 right-0 في الإنجليزية */}
                 <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
                   language === "ar" ? "left-0" : "right-0"
                 }`}>
-                  <FolderGit2 className="w-12 h-12 text-[#6366F1]" />
+                  <FolderGit2 className="w-10 h-10 lg:w-12 lg:h-12 text-[#6366F1]" />
                 </div>
-                
-                {/* اتجاه النص يتغير حسب اللغة لضمان بقاء إشارة الـ + متناسقة مع الرقم */}
-                <p className={`text-3xl font-bold text-[#6366F1] flex items-center mb-1 ${
+
+                <p className={`text-2xl lg:text-3xl font-bold text-[#6366F1] flex items-center mb-1 ${
                   language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
                 }`}>
                   <span>+</span>
                   <AnimatedCounter from={0} to={4} duration={0.6} />
                 </p>
-                <p className="text-sm font-medium text-foreground/70">
+                <p className="text-xs lg:text-sm font-medium text-foreground/70">
                   {language === "ar" ? "مشاريع منجزة" : "Completed Projects"}
                 </p>
               </motion.div>
 
+              {/* Skills Card */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="p-5 rounded-xl bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
+                className="p-5 lg:p-6 rounded-xl bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
               >
-                {/* محاذاة الأيقونة تتجاوب مع اتجاه اللغة بشكل كامل */}
                 <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
                   language === "ar" ? "left-0" : "right-0"
                 }`}>
-                  <Cpu className="w-12 h-12 text-[#22D3EE]" />
+                  <Cpu className="w-10 h-10 lg:w-12 lg:h-12 text-[#22D3EE]" />
                 </div>
-                
-                <p className={`text-3xl font-bold text-[#22D3EE] flex items-center mb-1 ${
+
+                <p className={`text-2xl lg:text-3xl font-bold text-[#22D3EE] flex items-center mb-1 ${
                   language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
                 }`}>
                   <span>+</span>
                   <AnimatedCounter from={0} to={6} duration={0.8} />
                 </p>
-                <p className="text-sm font-medium text-foreground/70">
+                <p className="text-xs lg:text-sm font-medium text-foreground/70">
                   {language === "ar" ? "مجالات تقنية" : "Technical Skills"}
                 </p>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Experience Process - تأخذ 6 أعمدة في الشاشات الكبيرة */}
-          <motion.div variants={itemVariants} className="space-y-4 lg:col-span-6">
+          {/* RIGHT: Experience Process - Takes 1 column on lg */}
+          <motion.div variants={itemVariants} className="lg:col-span-1 space-y-3 lg:space-y-4">
             {experienceData.map((exp, index) => (
               <motion.div
                 key={index}
-                whileHover={{ x: language === "ar" ? -5 : 5, scale: 1.02 }}
-                className="p-4 rounded-xl bg-card border border-border hover:border-[#6366F1]/50 hover:shadow-lg hover:shadow-[#6366F1]/5 transition-all cursor-default"
+                whileHover={{ x: language === "ar" ? -3 : 3, scale: 1.02 }}
+                className="p-4 lg:p-5 rounded-xl bg-card border border-border hover:border-[#6366F1]/50 hover:shadow-lg hover:shadow-[#6366F1]/5 transition-all cursor-default"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#6366F1] to-[#22D3EE] flex items-center justify-center text-white font-bold text-base flex-shrink-0 shadow-inner">
+                <div className="flex items-start gap-3 lg:gap-4">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br from-[#6366F1] to-[#22D3EE] flex items-center justify-center text-white font-bold text-xs lg:text-base flex-shrink-0 shadow-inner">
                     {index + 1}
                   </div>
-                  <div className="pt-1">
-                    <h3 className="font-bold text-foreground mb-1.5 tracking-wide">
+                  <div className="pt-0.5 lg:pt-1">
+                    <h3 className="font-bold text-foreground text-sm lg:text-base mb-1 lg:mb-1.5 tracking-wide">
                       {exp.title}
                     </h3>
-                    <p className="text-sm text-foreground/70 leading-relaxed">
+                    <p className="text-xs lg:text-sm text-foreground/70 leading-relaxed">
                       {exp.description}
                     </p>
                   </div>
@@ -181,50 +166,49 @@ export function About() {
           </motion.div>
         </motion.div>
 
-        {/* Education & Languages */}
+        {/* Education & Languages - Full Width */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          // استخدام الشبكة الواسعة هنا أيضاً
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
         >
           {/* Education */}
-          <div className="lg:col-span-6">
-            <h3 className="text-xl font-bold text-foreground mb-6">
+          <div>
+            <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-6 lg:mb-8">
               {language === "ar" ? "التعليم" : "Education"}
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4 lg:space-y-5">
               {portfolioData.education[language].map((edu, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ x: language === "ar" ? -5 : 5 }}
-                  className="p-4 rounded-lg bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all"
+                  whileHover={{ x: language === "ar" ? -4 : 4 }}
+                  className="p-4 lg:p-5 rounded-lg bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all"
                 >
-                  <p className="font-semibold text-foreground">{edu.degree}</p>
-                  <p className="text-sm text-foreground/70 mt-1">{edu.school}</p>
-                  <p className="text-xs text-[#6366F1] mt-2">{edu.period}</p>
+                  <p className="font-semibold text-foreground text-sm lg:text-base">{edu.degree}</p>
+                  <p className="text-xs lg:text-sm text-foreground/70 mt-1 lg:mt-2">{edu.school}</p>
+                  <p className="text-xs text-[#6366F1] mt-2 lg:mt-3 font-medium">{edu.period}</p>
                 </motion.div>
               ))}
             </div>
           </div>
 
           {/* Languages */}
-          <div className="lg:col-span-6">
-            <h3 className="text-xl font-bold text-foreground mb-6">
+          <div>
+            <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-6 lg:mb-8">
               {language === "ar" ? "اللغات" : "Languages"}
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4 lg:space-y-5">
               {portfolioData.languages[language].map((lang, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ x: language === "ar" ? -5 : 5 }}
-                  className="p-4 rounded-lg bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all"
+                  whileHover={{ x: language === "ar" ? -4 : 4 }}
+                  className="p-4 lg:p-5 rounded-lg bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="font-semibold text-foreground">{lang.name}</p>
-                    <span className="text-xs px-2 py-1 rounded-full bg-[#22D3EE]/20 text-[#22D3EE]">
+                    <p className="font-semibold text-foreground text-sm lg:text-base">{lang.name}</p>
+                    <span className="text-xs px-2 py-1 rounded-full bg-[#22D3EE]/20 text-[#22D3EE] font-medium">
                       {lang.level}
                     </span>
                   </div>
@@ -236,4 +220,3 @@ export function About() {
       </div>
     </section>
   );
-}
