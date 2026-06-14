@@ -282,60 +282,60 @@ export const portfolioData = {
   },
 
   experience: {
-  ar: [
-    {
-      title: "الفهم والتخطيط",
-      description:
-        "أبدأ بفهم الفكرة وتحليل احتياجات المستخدم، ثم أحدد المتطلبات لرسم تصور واضح للمشروع.",
-    },
-    {
-      title: "الهيكلة والتنظيم",
-      description:
-        "أصمم هيكل البيانات والعلاقات عند الحاجة للتخزين، لبناء أساس متماسك وقابل للتطوير.",
-    },
-    {
-      title: "التصميم والتجربة",
-      description:
-        "أهتم بتصميم واجهات واضحة وسهلة الاستخدام، مع التركيز على تجربة المستخدم والتجاوب مع مختلف الأجهزة.",
-    },
-    {
-      title: "التطوير والتنفيذ",
-      description:
-        "أحوّل الأفكار والتصاميم إلى حلول عملية من خلال كتابة كود منظم والاهتمام بالتفاصيل.",
-    },
-    {
-      title: "الاختبار والتسليم",
-      description:
-        "أراجع وأختبر المشروع من مختلف الجوانب لضمان جودة النتيجة قبل تسليمها أو نشرها.",
-    },
-  ],
+ar: [
+{
+title: "الفهم والتخطيط",
+description:
+"فهم الفكرة، تحديد نطاق المشروع، ووضع خطة واضحة للتنفيذ.",
+},
+{
+title: "هيكلة البيانات",
+description:
+"تخطيط هيكل البيانات والعلاقات بين الجداول عند الحاجة.",
+},
+{
+title: "التصميم",
+description:
+"تصميم واجهات تركز على UX / UI والتجاوب مع مختلف الأجهزة.",
+},
+{
+title: "التطوير",
+description:
+"تحويل الأفكار والتصاميم إلى تطبيقات ومواقع عملية.",
+},
+{
+title: "الاختبار والتسليم",
+description:
+"مراجعة المشروع، اختباره، وتجهيزه للإطلاق أو التسليم.",
+},
+],
 
-  en: [
-    {
-      title: "Discover & Plan",
-      description:
-        "Understand the idea, analyze user needs, and define requirements to establish a clear project direction.",
-    },
-    {
-      title: "Structure",
-      description:
-        "Design data structures and relationships when needed to build a solid and scalable foundation.",
-    },
-    {
-      title: "Design",
-      description:
-        "Create intuitive and responsive interfaces with a strong focus on usability and user experience.",
-    },
-    {
-      title: "Build",
-      description:
-        "Transform ideas and designs into practical solutions through organized development and attention to detail.",
-    },
-    {
-      title: "Refine & Deliver",
-      description:
-        "Review, test, and refine the project from different perspectives to ensure a reliable final outcome before launch or delivery.",
-    },
-  ],
+en: [
+{
+title: "Discover & Plan",
+description:
+"Understand the idea, define the scope, and establish a clear direction.",
+},
+{
+title: "Data Structure",
+description:
+"Plan data structures and relationships when required.",
+},
+{
+title: "Design",
+description:
+"Create responsive interfaces with a focus on UX / UI.",
+},
+{
+title: "Build",
+description:
+"Turn ideas and designs into practical digital solutions.",
+},
+{
+title: "Test & Deliver",
+description:
+"Review, test, and prepare the project for launch or delivery.",
+},
+],
   }
 };
