@@ -65,7 +65,7 @@ export function About() {
           <div className="w-12 h-1.5 bg-gradient-to-r from-[#6366F1] to-[#22D3EE] rounded-full" />
         </motion.div>
 
-        {/* ROW 1: Bio + Experience */}
+        {/* ROW 1: Bio + Stats (Left) & Experience (Right) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -73,25 +73,77 @@ export function About() {
           viewport={{ once: true }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 lg:mb-20"
         >
-          {/* LEFT: Bio Section */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <p className="text-base lg:text-lg text-foreground/80 leading-relaxed">
-              {data.bio}
-            </p>
+          {/* LEFT COLUMN: Bio, CV Button, and Stats */}
+          <motion.div variants={itemVariants} className="flex flex-col gap-10 lg:gap-12">
+            
+            {/* Bio & CV Area */}
+            <div className="space-y-6">
+              <p className="text-base lg:text-lg text-foreground/80 leading-relaxed">
+                {data.bio}
+              </p>
 
-            <motion.a
-              href={data.cv}
-              download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base hover:bg-[#22D3EE]/10 transition-all"
-            >
-              <Download className="w-4 h-4 lg:w-5 lg:h-5" />
-              {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
-            </motion.a>
+              <motion.a
+                href={data.cv}
+                download
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base hover:bg-[#22D3EE]/10 transition-all"
+              >
+                <Download className="w-4 h-4 lg:w-5 lg:h-5" />
+                {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
+              </motion.a>
+            </div>
+
+            {/* Stats Area - Pushed to the bottom using mt-auto */}
+            <div className="grid grid-cols-2 gap-4 lg:gap-6 mt-auto">
+              {/* Projects Card */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="p-5 lg:p-6 rounded-xl bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
+              >
+                <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
+                  language === "ar" ? "left-0" : "right-0"
+                }`}>
+                  <FolderGit2 className="w-10 h-10 lg:w-12 lg:h-12 text-[#6366F1]" />
+                </div>
+
+                <p className={`text-3xl lg:text-4xl font-bold text-[#6366F1] flex items-center mb-2 ${
+                  language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
+                }`}>
+                  <span>+</span>
+                  <AnimatedCounter from={0} to={4} duration={0.6} />
+                </p>
+                <p className="text-sm font-medium text-foreground/70">
+                  {language === "ar" ? "مشاريع منجزة" : "Completed Projects"}
+                </p>
+              </motion.div>
+
+              {/* Skills Card */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="p-5 lg:p-6 rounded-xl bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
+              >
+                <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
+                  language === "ar" ? "left-0" : "right-0"
+                }`}>
+                  <Cpu className="w-10 h-10 lg:w-12 lg:h-12 text-[#22D3EE]" />
+                </div>
+
+                <p className={`text-3xl lg:text-4xl font-bold text-[#22D3EE] flex items-center mb-2 ${
+                  language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
+                }`}>
+                  <span>+</span>
+                  <AnimatedCounter from={0} to={6} duration={0.8} />
+                </p>
+                <p className="text-sm font-medium text-foreground/70">
+                  {language === "ar" ? "مجالات تقنية" : "Technical Skills"}
+                </p>
+              </motion.div>
+            </div>
+
           </motion.div>
 
-          {/* RIGHT: Experience Process */}
+          {/* RIGHT COLUMN: Experience Process */}
           <motion.div variants={itemVariants} className="space-y-3 lg:space-y-4">
             {experienceData.map((exp, index) => (
               <motion.div
@@ -117,62 +169,7 @@ export function About() {
           </motion.div>
         </motion.div>
 
-        {/* ROW 2: Stats - Full Width */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 lg:mb-20"
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-8">
-            {/* Projects Card */}
-            <motion.div
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="p-5 lg:p-8 rounded-xl bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
-            >
-              <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
-                language === "ar" ? "left-0" : "right-0"
-              }`}>
-                <FolderGit2 className="w-12 h-12 lg:w-16 lg:h-16 text-[#6366F1]" />
-              </div>
-
-              <p className={`text-3xl lg:text-5xl font-bold text-[#6366F1] flex items-center mb-2 ${
-                language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
-              }`}>
-                <span>+</span>
-                <AnimatedCounter from={0} to={4} duration={0.6} />
-              </p>
-              <p className="text-sm lg:text-lg font-medium text-foreground/70">
-                {language === "ar" ? "مشاريع منجزة" : "Completed Projects"}
-              </p>
-            </motion.div>
-
-            {/* Skills Card */}
-            <motion.div
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="p-5 lg:p-8 rounded-xl bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
-            >
-              <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
-                language === "ar" ? "left-0" : "right-0"
-              }`}>
-                <Cpu className="w-12 h-12 lg:w-16 lg:h-16 text-[#22D3EE]" />
-              </div>
-
-              <p className={`text-3xl lg:text-5xl font-bold text-[#22D3EE] flex items-center mb-2 ${
-                language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
-              }`}>
-                <span>+</span>
-                <AnimatedCounter from={0} to={6} duration={0.8} />
-              </p>
-              <p className="text-sm lg:text-lg font-medium text-foreground/70">
-                {language === "ar" ? "مجالات تقنية" : "Technical Skills"}
-              </p>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* ROW 3: Education & Languages */}
+        {/* ROW 2: Education & Languages */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -226,4 +223,5 @@ export function About() {
       </div>
     </section>
   );
-}
+            }
+                             
