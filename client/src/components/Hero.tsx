@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Linkedin, Github, Instagram, Twitter, Send } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
 
@@ -7,191 +7,117 @@ export function Hero() {
   const { language } = useLanguage();
   const data = portfolioData.personal[language];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
+  const socialLinks = [
+    { href: data.github, label: "GitHub", icon: Github },
+    { href: data.linkedin, label: "LinkedIn", icon: Linkedin },
+    { href: data.instagram, label: "Instagram", icon: Instagram },
+    { href: data.x, label: "X", icon: Twitter },
+  ];
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-28 pb-20 relative overflow-hidden"
+      className="relative isolate flex min-h-[calc(100svh-4rem)] items-center overflow-hidden border-b border-border/70 pt-24 pb-16 lg:pt-28"
     >
-      {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#6366F1]/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-[#22D3EE]/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.05)_0%,transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-y-0 end-[8%] hidden w-px bg-border/50 lg:block" />
+        <div className="absolute start-0 top-[22%] h-px w-24 bg-[#477B78]/70" />
+        <div className="absolute bottom-0 end-0 h-72 w-72 translate-x-1/3 translate-y-1/3 rounded-full border border-[#477B78]/10" />
       </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="container max-w-7xl px-6 lg:px-8"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
-          
-          {/* Text Content - Spans 7 columns on large screens */}
-          <div className="space-y-10 order-2 lg:order-1 lg:col-span-7 text-center lg:text-left rtl:lg:text-right">
-            <motion.div variants={itemVariants} className="space-y-6">
-             <motion.h1
-  className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.1]"
-  variants={itemVariants}
->
-  <span className="text-foreground">
-    {data.name}
-  </span>
-</motion.h1>
+      <div className="container relative z-10 max-w-6xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(240px,0.58fr)] lg:gap-20">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+            className="order-2 space-y-7 text-center lg:order-1 lg:text-start"
+          >
+            <div className="inline-flex items-center gap-3 text-sm font-medium tracking-wide text-muted-foreground">
+              <span className="h-px w-8 bg-[#477B78]" />
+              {language === "ar" ? "مرحباً، أنا" : "HELLO, I'M"}
+            </div>
 
-              <motion.p
-                className="text-2xl md:text-3xl text-[#6366F1] font-bold tracking-wide"
-                variants={itemVariants}
-              >
+            <div className="space-y-4">
+              <h1 className="text-5xl font-semibold leading-[1.18] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+                {data.name}
+              </h1>
+              <p className="max-w-2xl text-xl font-medium leading-relaxed text-[#477B78] sm:text-2xl">
                 {data.title}
-              </motion.p>
-
-              <motion.p
-                className="text-xl md:text-2xl text-foreground/60 leading-relaxed max-w-2xl mx-auto lg:mx-0"
-                variants={itemVariants}
-              >
+              </p>
+              <p className="mx-auto max-w-xl text-base leading-8 text-muted-foreground sm:text-lg lg:mx-0">
                 {data.subtitle}
-              </motion.p>
-            </motion.div>
+              </p>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-5 pt-6 justify-center lg:justify-start"
-            >
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-1 lg:justify-start">
               <motion.a
                 href="#projects"
-                whileHover={{ scale: 1.05, x: language === "ar" ? -5 : 5 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#6366F1] text-white rounded-2xl font-bold text-lg hover:bg-[#6366F1]/90 transition-all shadow-lg shadow-[#6366F1]/25 group cursor-pointer"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-3 rounded-md bg-[#477B78] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#3c6967]"
               >
-                {language === "ar" ? "عرض المشاريع" : "View Projects"}
-                <ArrowRight className={`w-5 h-5 transition-transform group-hover:translate-x-1 ${language === "ar" ? "rotate-180 group-hover:-translate-x-1" : ""}`} />
+                {language === "ar" ? "استكشف مشاريعي" : "Explore my work"}
+                <ArrowUpRight className="h-4 w-4" />
               </motion.a>
+              <a
+                href="#about"
+                className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-3.5 text-sm font-medium text-foreground transition-colors hover:border-[#D18C62]/70 hover:text-[#D18C62]"
+              >
+                {language === "ar" ? "المزيد عني" : "More about me"}
+              </a>
+            </div>
 
-              </motion.div>
-
-            {/* Social Links with enhanced styling */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-5 pt-8 justify-center lg:justify-start"
-            >
-              {[
-                { href: data.linkedin, icon: Linkedin, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20 shadow-[#6366F1]/20" },
-                { href: data.github, icon: Github, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20 shadow-[#22D3EE]/20" },
-                { href: data.instagram, icon: Instagram, color: "text-[#6366F1]", bg: "bg-[#6366F1]/10", hover: "hover:bg-[#6366F1]/20 shadow-[#6366F1]/20" },
-                { href: data.x, icon: Twitter, color: "text-[#22D3EE]", bg: "bg-[#22D3EE]/10", hover: "hover:bg-[#22D3EE]/20 shadow-[#22D3EE]/20" },
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
+            <div className="flex items-center justify-center gap-2 pt-2 lg:justify-start">
+              {socialLinks.map(({ href, label, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ y: -6, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md ${social.bg} ${social.color} ${social.hover}`}
+                  aria-label={label}
+                  title={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-all hover:border-[#477B78] hover:text-[#477B78]"
                 >
-                  <social.icon className="w-6 h-6" />
-                </motion.a>
+                  <Icon className="h-[18px] w-[18px]" />
+                </a>
               ))}
-            </motion.div>
-          </div>
-
-          {/* Visual Content - Spans 5 columns on large screens */}
-          <motion.div
-            variants={itemVariants}
-            className="relative lg:col-span-5 order-1 lg:order-2"
-          >
-            <div className="relative w-full aspect-square max-w-[500px] mx-auto">
-              {/* Animated Background Rings */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[-10%] border-2 border-dashed border-[#6366F1]/20 rounded-full"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[-20%] border border-[#22D3EE]/10 rounded-full"
-              />
-
-              {/* Main Image Container */}
-              <div className="relative h-full w-full rounded-3xl overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/20 via-transparent to-[#22D3EE]/20 z-10" />
-                <div className="absolute inset-0 backdrop-blur-[2px] z-0" />
-                
-                <motion.div
-                  animate={{
-                    y: [0, -20, 0],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-20 h-full w-full flex items-center justify-center p-8"
-                >
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
-                    <img 
-                      src="/Profil.png" 
-                      alt="Khaled Amin" 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
-                  </div>
-                </motion.div>
-
-                {/* Decorative floating elements */}
-                <motion.div 
-                  animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute top-10 right-10 w-12 h-12 bg-[#6366F1]/20 backdrop-blur-xl rounded-xl border border-white/10 z-30"
-                />
-                <motion.div 
-                  animate={{ y: [0, -15, 0], x: [0, -10, 0] }}
-                  transition={{ duration: 5, repeat: Infinity }}
-                  className="absolute bottom-20 left-10 w-16 h-16 bg-[#22D3EE]/20 backdrop-blur-xl rounded-2xl border border-white/10 z-30"
-                />
-              </div>
             </div>
           </motion.div>
 
-        </div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block"
-      >
-        <div className="w-7 h-12 border-2 border-[#6366F1]/30 rounded-full flex items-start justify-center p-2 backdrop-blur-sm">
           <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1.5 h-3 bg-gradient-to-b from-[#6366F1] to-[#22D3EE] rounded-full"
-          />
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.12, ease: "easeOut" }}
+            className="order-1 mx-auto w-full max-w-[190px] sm:max-w-[220px] lg:order-2 lg:max-w-[310px]"
+          >
+            <div className="relative">
+              <div className="absolute -inset-3 -z-10 translate-x-3 translate-y-3 border border-[#D18C62]/45" />
+              <div className="aspect-[4/5] overflow-hidden bg-[#17242A]">
+                <img
+                  src="/Profil.png"
+                  alt="Khaled Ameen"
+                  className="h-full w-full object-cover object-[center_24%]"
+                />
+              </div>
+              <span className="absolute -bottom-5 -start-5 bg-background px-3 py-2 text-xs font-medium tracking-[0.18em] text-[#D18C62]">
+                K.A / 01
+              </span>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+
+        <motion.a
+          href="#about"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9 }}
+          className="absolute bottom-5 start-1/2 hidden -translate-x-1/2 items-center gap-2 text-xs tracking-widest text-muted-foreground transition-colors hover:text-[#477B78] lg:flex"
+        >
+          {language === "ar" ? "اكتشف المزيد" : "SCROLL TO EXPLORE"}
+          <ArrowDown className="h-4 w-4" />
+        </motion.a>
+      </div>
     </section>
   );
 }

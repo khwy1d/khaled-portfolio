@@ -1,11 +1,10 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Button } from "@/components/ui/button";
 
 export function Navbar() {
-  const { language, setLanguage, direction } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = {
@@ -25,85 +24,74 @@ export function Navbar() {
     ],
   };
 
-  const currentNavItems = navItems[language];
-
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50"
+      className="fixed top-0 z-50 w-full border-b border-border/80 bg-background/95 backdrop-blur-sm"
     >
-      <div className="container flex items-center justify-between h-16">
-        {/* Logo */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="text-xl font-bold bg-gradient-to-r from-[#6366F1] to-[#22D3EE] bg-clip-text text-transparent"
-        >
-          K.A
-        </motion.div>
+      <div className="container flex h-[4.25rem] items-center justify-between">
+        <a href="#home" className="text-2xl font-semibold tracking-tight text-foreground">
+          K<span className="text-[#477B78]">.</span>A
+        </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {currentNavItems.map((item) => (
-            <motion.a
+        <div className="hidden items-center gap-8 md:flex">
+          {navItems[language].map((item) => (
+            <a
               key={item.href}
               href={item.href}
-              whileHover={{ color: "#6366F1" }}
-              className="text-sm font-medium text-foreground/70 hover:text-[#6366F1] transition-colors"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-[#477B78]"
             >
               {item.label}
-            </motion.a>
+            </a>
           ))}
         </div>
 
-        {/* Language Toggle & Mobile Menu */}
-        <div className="flex items-center gap-4">
-          {/* Language Toggle */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setLanguage(language === "ar" ? "en" : "ar")}
-            className="px-3 py-1.5 rounded-full bg-[#6366F1]/10 text-[#6366F1] text-xs font-semibold hover:bg-[#6366F1]/20 transition-colors"
-          >
-            {language === "ar" ? "EN" : "AR"}
-          </motion.button>
-
-          {/* Mobile Menu Button */}
+        <div className="flex items-center gap-3">
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 hover:bg-accent rounded-lg transition-colors"
+            type="button"
+            onClick={() => setLanguage(language === "ar" ? "en" : "ar")}
+            className="min-w-11 rounded-md border border-border px-3 py-2 text-xs font-semibold text-[#477B78] transition-colors hover:border-[#477B78]"
+            aria-label={language === "ar" ? "Switch to English" : "التبديل إلى العربية"}
           >
-            {isOpen ? (
-              <X className="w-5 h-5" />
-            ) : (
-              <Menu className="w-5 h-5" />
-            )}
+            {language === "ar" ? "EN" : "عربي"}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            className="rounded-md p-2 text-foreground transition-colors hover:bg-secondary md:hidden"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-background border-b border-border"
-        >
-          <div className="container py-4 flex flex-col gap-3">
-            {currentNavItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-sm font-medium text-foreground/70 hover:text-[#6366F1] transition-colors py-2"
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden border-t border-border bg-background md:hidden"
+          >
+            <div className="container flex flex-col gap-1 py-3">
+              {navItems[language].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="py-2.5 text-sm text-muted-foreground transition-colors hover:text-[#477B78]"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

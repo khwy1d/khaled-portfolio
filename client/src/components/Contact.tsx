@@ -97,8 +97,8 @@ export function Contact() {
   return (
     <section id="contact" className="py-20 bg-card/50 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl opacity-20 -z-10" />
-      <div className="absolute bottom-1/2 left-0 w-96 h-96 bg-[#22D3EE]/10 rounded-full blur-3xl opacity-20 -z-10" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#477B78]/10 rounded-full blur-2xl opacity-10 -z-10" />
+      <div className="absolute bottom-1/2 left-0 w-96 h-96 bg-[#D18C62]/10 rounded-full blur-2xl opacity-10 -z-10" />
 
       <div className="container max-w-7xl px-6 lg:px-8">
         <motion.div
@@ -111,7 +111,7 @@ export function Contact() {
           <h2 className="text-4xl font-bold text-foreground mb-4">
             {language === "ar" ? "التواصل" : "Get In Touch"}
           </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#6366F1] to-[#22D3EE]" />
+          <div className="w-12 h-1 bg-gradient-to-r from-[#477B78] to-[#D18C62]" />
         </motion.div>
 
         <motion.div
@@ -139,14 +139,14 @@ export function Contact() {
                     href={info.href}
                     variants={itemVariants}
                     whileHover={{ x: language === "ar" ? -5 : 5 }}
-                    className="flex items-start gap-4 lg:gap-5 p-5 lg:p-6 rounded-xl bg-background border border-border hover:border-[#6366F1]/50 hover:shadow-lg hover:shadow-[#6366F1]/5 transition-all group"
+                    className="flex items-start gap-4 lg:gap-5 p-5 lg:p-6 rounded-xl bg-background border border-border hover:border-[#477B78]/50 hover:shadow-lg hover:shadow-[#477B78]/5 transition-all group"
                   >
-                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#6366F1]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#6366F1]/20 transition-colors">
-                      <Icon className="w-6 h-6 lg:w-7 lg:h-7 text-[#6366F1]" />
+                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#477B78]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#477B78]/20 transition-colors">
+                      <Icon className="w-6 h-6 lg:w-7 lg:h-7 text-[#477B78]" />
                     </div>
                     <div className="pt-1">
                       <p className="text-sm lg:text-base text-foreground/70 mb-1">{info.label}</p>
-                      <p className="font-semibold text-base lg:text-lg text-foreground group-hover:text-[#6366F1] transition-colors">
+                      <p className="font-semibold text-base lg:text-lg text-foreground group-hover:text-[#477B78] transition-colors">
                         {info.value}
                       </p>
                     </div>
@@ -173,7 +173,7 @@ export function Contact() {
                       title={social.label}
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#6366F1]/10 flex items-center justify-center text-[#6366F1] hover:bg-[#6366F1]/20 hover:shadow-md hover:shadow-[#6366F1]/10 transition-all"
+                      className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#477B78]/10 flex items-center justify-center text-[#477B78] hover:bg-[#477B78]/20 hover:shadow-md hover:shadow-[#477B78]/10 transition-all"
                     >
                       <Icon className="w-5 h-5 lg:w-6 lg:h-6" />
                     </motion.a>
@@ -201,7 +201,7 @@ export function Contact() {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1] focus:outline-none transition-all"
+                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#477B78] focus:ring-1 focus:ring-[#477B78] focus:outline-none transition-all"
                 placeholder={language === "ar" ? "أدخل اسمك" : "Enter your name"}
               />
             </div>
@@ -218,7 +218,7 @@ export function Contact() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1] focus:outline-none transition-all"
+                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#477B78] focus:ring-1 focus:ring-[#477B78] focus:outline-none transition-all"
                 placeholder={
                   language === "ar"
                     ? "أدخل بريدك الإلكتروني"
@@ -239,7 +239,7 @@ export function Contact() {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 rows={5}
-                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#6366F1] focus:ring-1 focus:ring-[#6366F1] focus:outline-none transition-all resize-none"
+                className="w-full px-5 py-3.5 lg:py-4 rounded-xl bg-card border border-border focus:border-[#477B78] focus:ring-1 focus:ring-[#477B78] focus:outline-none transition-all resize-none"
                 placeholder={
                   language === "ar"
                     ? "أدخل رسالتك هنا"
@@ -252,7 +252,7 @@ export function Contact() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full px-6 py-4 mt-2 bg-gradient-to-r from-[#6366F1] to-[#22D3EE] text-white rounded-xl font-bold text-base lg:text-lg hover:shadow-lg hover:shadow-[#6366F1]/25 transition-all"
+              className="w-full px-6 py-4 mt-2 bg-gradient-to-r from-[#477B78] to-[#D18C62] text-white rounded-xl font-bold text-base lg:text-lg hover:shadow-lg hover:shadow-[#477B78]/25 transition-all"
             >
               {language === "ar" ? "إرسال الرسالة" : "Send Message"}
             </motion.button>

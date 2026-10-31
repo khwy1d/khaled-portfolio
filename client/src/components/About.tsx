@@ -48,7 +48,7 @@ export function About() {
   return (
     <section id="about" className="py-20 lg:py-32 bg-background relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#6366F1]/10 rounded-full blur-3xl opacity-20 -z-10" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#477B78]/10 rounded-full blur-2xl opacity-10 -z-10" />
 
       <div className="container max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Section Header */}
@@ -62,7 +62,7 @@ export function About() {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
             {language === "ar" ? "عني" : "About Me"}
           </h2>
-          <div className="w-12 h-1.5 bg-gradient-to-r from-[#6366F1] to-[#22D3EE] rounded-full" />
+          <div className="w-12 h-1.5 bg-gradient-to-r from-[#477B78] to-[#D18C62] rounded-full" />
         </motion.div>
 
         {/* ROW 1: Bio + Stats (Left) & Experience (Right) */}
@@ -87,7 +87,7 @@ export function About() {
                 download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 border-2 border-[#22D3EE] text-[#22D3EE] rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base hover:bg-[#22D3EE]/10 transition-all"
+                className="inline-flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 border-2 border-[#D18C62] text-[#D18C62] rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base hover:bg-[#D18C62]/10 transition-all"
               >
                 <Download className="w-4 h-4 lg:w-5 lg:h-5" />
                 {language === "ar" ? "تحميل السيرة الذاتية" : "Download CV"}
@@ -99,15 +99,15 @@ export function About() {
               {/* Projects Card */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="p-5 lg:p-6 rounded-xl bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
+                className="p-5 lg:p-6 rounded-xl bg-[#477B78]/5 border border-[#477B78]/20 hover:border-[#477B78]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
               >
                 <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
                   language === "ar" ? "left-0" : "right-0"
                 }`}>
-                  <FolderGit2 className="w-10 h-10 lg:w-12 lg:h-12 text-[#6366F1]" />
+                  <FolderGit2 className="w-10 h-10 lg:w-12 lg:h-12 text-[#477B78]" />
                 </div>
 
-                <p className={`text-3xl lg:text-4xl font-bold text-[#6366F1] flex items-center mb-2 ${
+                <p className={`text-3xl lg:text-4xl font-bold text-[#477B78] flex items-center mb-2 ${
                   language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
                 }`}>
                   <span>+</span>
@@ -121,15 +121,15 @@ export function About() {
               {/* Skills Card */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="p-5 lg:p-6 rounded-xl bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
+                className="p-5 lg:p-6 rounded-xl bg-[#D18C62]/5 border border-[#D18C62]/20 hover:border-[#D18C62]/50 transition-all flex flex-col justify-center relative overflow-hidden group"
               >
                 <div className={`absolute top-0 p-3 opacity-20 group-hover:opacity-40 group-hover:scale-110 transition-all ${
                   language === "ar" ? "left-0" : "right-0"
                 }`}>
-                  <Cpu className="w-10 h-10 lg:w-12 lg:h-12 text-[#22D3EE]" />
+                  <Cpu className="w-10 h-10 lg:w-12 lg:h-12 text-[#D18C62]" />
                 </div>
 
-                <p className={`text-3xl lg:text-4xl font-bold text-[#22D3EE] flex items-center mb-2 ${
+                <p className={`text-3xl lg:text-4xl font-bold text-[#D18C62] flex items-center mb-2 ${
                   language === "ar" ? "flex-row-reverse justify-end" : "flex-row"
                 }`}>
                   <span>+</span>
@@ -149,10 +149,10 @@ export function About() {
               <motion.div
                 key={index}
                 whileHover={{ x: language === "ar" ? -3 : 3, scale: 1.02 }}
-                className="p-4 lg:p-5 rounded-xl bg-card border border-border hover:border-[#6366F1]/50 hover:shadow-lg hover:shadow-[#6366F1]/5 transition-all cursor-default"
+                className="p-4 lg:p-5 rounded-xl bg-card border border-border hover:border-[#477B78]/50 hover:shadow-lg hover:shadow-[#477B78]/5 transition-all cursor-default"
               >
                 <div className="flex items-start gap-3 lg:gap-4">
-                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br from-[#6366F1] to-[#22D3EE] flex items-center justify-center text-white font-bold text-xs lg:text-base flex-shrink-0 shadow-inner">
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-br from-[#477B78] to-[#D18C62] flex items-center justify-center text-white font-bold text-xs lg:text-base flex-shrink-0 shadow-inner">
                     {index + 1}
                   </div>
                   <div className="pt-0.5 lg:pt-1">
@@ -187,11 +187,11 @@ export function About() {
                 <motion.div
                   key={index}
                   whileHover={{ x: language === "ar" ? -4 : 4 }}
-                  className="p-4 lg:p-5 rounded-lg bg-[#6366F1]/5 border border-[#6366F1]/20 hover:border-[#6366F1]/50 transition-all"
+                  className="p-4 lg:p-5 rounded-lg bg-[#477B78]/5 border border-[#477B78]/20 hover:border-[#477B78]/50 transition-all"
                 >
                   <p className="font-semibold text-foreground text-sm lg:text-base">{edu.degree}</p>
                   <p className="text-xs lg:text-sm text-foreground/70 mt-1 lg:mt-2">{edu.school}</p>
-                  <p className="text-xs text-[#6366F1] mt-2 lg:mt-3 font-medium">{edu.period}</p>
+                  <p className="text-xs text-[#477B78] mt-2 lg:mt-3 font-medium">{edu.period}</p>
                 </motion.div>
               ))}
             </div>
@@ -207,11 +207,11 @@ export function About() {
                 <motion.div
                   key={index}
                   whileHover={{ x: language === "ar" ? -4 : 4 }}
-                  className="p-4 lg:p-5 rounded-lg bg-[#22D3EE]/5 border border-[#22D3EE]/20 hover:border-[#22D3EE]/50 transition-all"
+                  className="p-4 lg:p-5 rounded-lg bg-[#D18C62]/5 border border-[#D18C62]/20 hover:border-[#D18C62]/50 transition-all"
                 >
                   <div className="flex items-center justify-between">
                     <p className="font-semibold text-foreground text-sm lg:text-base">{lang.name}</p>
-                    <span className="text-xs px-2 py-1 rounded-full bg-[#22D3EE]/20 text-[#22D3EE] font-medium">
+                    <span className="text-xs px-2 py-1 rounded-full bg-[#D18C62]/20 text-[#D18C62] font-medium">
                       {lang.level}
                     </span>
                   </div>

@@ -28,7 +28,7 @@ export function Skills() {
   return (
     <section id="skills" className="py-20 bg-card/50 relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute bottom-1/2 left-0 w-96 h-96 bg-[#22D3EE]/10 rounded-full blur-3xl opacity-20 -z-10" />
+      <div className="absolute bottom-1/2 left-0 w-96 h-96 bg-[#D18C62]/10 rounded-full blur-2xl opacity-10 -z-10" />
 
       {/* تم التعديل هنا ليكون العرض أوسع ويطابق الأقسام السابقة */}
       <div className="container max-w-7xl px-6 lg:px-8">
@@ -42,7 +42,7 @@ export function Skills() {
           <h2 className="text-4xl font-bold text-foreground mb-4">
             {language === "ar" ? "المهارات" : "Skills"}
           </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-[#6366F1] to-[#22D3EE]" />
+          <div className="w-12 h-1 bg-gradient-to-r from-[#477B78] to-[#D18C62]" />
         </motion.div>
 
         <motion.div
@@ -58,12 +58,12 @@ export function Skills() {
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-xl bg-background border border-border hover:border-[#6366F1]/50 transition-all group shadow-sm hover:shadow-md"
+              className="p-6 rounded-xl bg-background border border-border hover:border-[#477B78]/50 transition-all group shadow-sm hover:shadow-md"
             >
               {/* تم زيادة المسافة السفلية هنا لتناسب الحجم الجديد */}
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#6366F1] to-[#22D3EE]" />
-                <h3 className="text-xl font-bold text-foreground group-hover:text-[#6366F1] transition-colors">
+                <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#477B78] to-[#D18C62]" />
+                <h3 className="text-xl font-bold text-foreground group-hover:text-[#477B78] transition-colors">
                   {skillGroup.category}
                 </h3>
               </div>
@@ -80,7 +80,7 @@ export function Skills() {
                     className="flex items-center gap-3"
                   >
                     {/* تكبير النقطة قليلاً */}
-                    <span className="w-2 h-2 rounded-full bg-[#22D3EE]/70" />
+                    <span className="w-2 h-2 rounded-full bg-[#D18C62]/70" />
                     <span className="text-base text-foreground/80 group-hover:text-foreground transition-colors">
                       {skill}
                     </span>

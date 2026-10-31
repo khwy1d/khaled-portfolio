@@ -20,7 +20,7 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl font-bold bg-gradient-to-r from-[#6366F1] to-[#22D3EE] bg-clip-text text-transparent mb-2">
+            <h3 className="text-xl font-bold bg-gradient-to-r from-[#477B78] to-[#D18C62] bg-clip-text text-transparent mb-2">
               K.A Portfolio
             </h3>
             <p className="text-sm text-foreground/70">
@@ -52,7 +52,7 @@ export function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground/70 hover:text-[#6366F1] transition-colors"
+                    className="text-sm text-foreground/70 hover:text-[#477B78] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -75,7 +75,7 @@ export function Footer() {
               <li>
                 <a
                   href="mailto:khwyld.a.alsharabi@gmail.com"
-                  className="text-sm text-foreground/70 hover:text-[#6366F1] transition-colors"
+                  className="text-sm text-foreground/70 hover:text-[#477B78] transition-colors"
                 >
                   khwyld.a.alsharabi@gmail.com
                 </a>
@@ -83,7 +83,7 @@ export function Footer() {
               <li>
                 <a
                   href="tel:+967735452441"
-                  className="text-sm text-foreground/70 hover:text-[#6366F1] transition-colors"
+                  className="text-sm text-foreground/70 hover:text-[#477B78] transition-colors"
                 >
                   +967 735452441
                 </a>
